@@ -1,0 +1,49 @@
+@import '../../styles/variables.scss';
+
+.finish {
+  background-color: $primary-color;
+  color: $white;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.finished {
+  background-color: $gray;
+  color: $white;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  cursor: not-allowed;
+}
+
+.buy {
+  background-color: $dark-gray;
+  color: $white;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.inCart {
+  background-color: $primary-color;
+  color: $white;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  cursor: not-allowed;
+}
+
+.load {
+  background-color: $dark-gray;
+  color: $white;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.loaded {
+  background-color: $primary-color;
+  color: $white;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  cursor: not-allowed;
+}

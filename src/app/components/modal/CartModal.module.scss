@@ -1,0 +1,106 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background-color: #1e1e26;
+    padding: 2rem;
+    width: 400px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cartItems {
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .cartItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  
+    .itemDetails {
+      flex: 1;
+      margin-left: 1rem;
+  
+      h3 {
+        margin: 0;
+      }
+  
+      p {
+        margin: 0.5rem 0;
+      }
+  
+      .quantityControl {
+        display: flex;
+        align-items: center;
+  
+        button {
+          background-color: #f88b04;
+          border: none;
+          padding: 0.5rem;
+          cursor: pointer;
+          color: white;
+          font-weight: bold;
+          border-radius: 5px;
+        }
+  
+        span {
+          margin: 0 1rem;
+        }
+      }
+    }
+  
+    .removeItem {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  
+  .total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .checkoutButton {
+    background-color: #f88b04;
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    text-align: center;
+  
+    &:hover {
+      background-color: #f76a00;
+    }
+  }
+  

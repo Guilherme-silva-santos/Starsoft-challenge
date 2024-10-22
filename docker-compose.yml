@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    image: node:20-alpine
+    container_name: nextjs_dev_app
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    environment:
+      NODE_ENV: development
+      NEXT_SHARP_PATH: "/app/node_modules/sharp"
+    depends_on:
+      - node_modules_setup
+
+  node_modules_setup:
+    image: node:20-alpine
+    container_name: node_modules_setup
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["npm", "install"]

@@ -1,94 +1,136 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import '../app/styles/main.scss';
+import '../app/styles/globals.scss';
+
+import styles from './HomePage.module.scss';
+import Image from 'next/image';
+import { useState } from 'react';
+import CartModal from './components/modal/Modal';
+
+interface Product {
+  id: number;
+  name: string;
+  price: string;
+  description: string;
+  image: string;
+}
+
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isCartOpen, setCartOpen] = useState(false);
+  const products: Product[]= [
+    {
+      id: 1,
+      name: 'Produto 1',
+      price: '32 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product1.png',
+    },
+    {
+      id: 2,
+      name: 'Produto 2',
+      price: '12 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product2.png',
+    },
+    {
+      id: 3,
+      name: 'Produto 3',
+      price: '32 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product3.png',
+    },
+    {
+      id: 4,
+      name: 'Produto 4',
+      price: '32 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product4.png',
+    },
+    {
+      id: 5,
+      name: 'Produto 5',
+      price: '32 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product5.png',
+    },
+    {
+      id: 6,
+      name: 'Produto 6',
+      price: '32 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product6.png',
+    },
+    {
+      id: 7,
+      name: 'Produto 7',
+      price: '32 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product7.png',
+    },
+    {
+      id: 8,
+      name: 'Produto 8',
+      price: '32 ETH',
+      description: 'Conhecimento obtido da complexidade do universo',
+      image: '/images/product8.png',
+    },
+  ];
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const totalPrice = '44 ETH';
+
+  const cartItems = [
+    { id: 1, name: 'Item 2', price: '12 ETH', image: '/images/item2.png', quantity: 1 },
+    { id: 2, name: 'Item 9', price: '32 ETH', image: '/images/item9.png', quantity: 1 },
+  ];
+  const toggleCart = () => {
+    setCartOpen(!isCartOpen);
+  };
+
+  return (
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <div className={styles.logo}>Starsoft</div>
+        <button className={styles.cartIcon} onClick={toggleCart}>
+          <Image src="/images/cart.png" alt="cart" width={32} height={32} />
+        </button>
+      </header>
+
+      <CartModal
+        isOpen={isCartOpen}
+        onClose={toggleCart}
+        cartItems={cartItems}
+        totalPrice={totalPrice}
+      />
+
+      <main className={styles.productGrid}>
+        {products.map((product: Product) => (
+          <div key={product.id} className={styles.productCard}>
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src={product.image}
+              alt={product.name}
+              width={150}
+              height={150}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <div className={styles.price}>
+              <Image
+                src="/images/eth.png"
+                alt="eth logo"
+                width={16}
+                height={16}
+              />
+              <span>{product.price}</span>
+            </div>
+            <button className={styles.buyButton}>Comprar</button>
+          </div>
+        ))}
       </main>
+
       <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <button className={styles.loadMoreButton}>Carregar mais</button>
+        <p>Starsoft © Todos os direitos reservados</p>
       </footer>
     </div>
   );
